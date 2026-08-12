@@ -155,7 +155,6 @@ input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 8px rgba(74
 
 <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeM()"><div class="modal-box" id="modalBox"></div></div>
 <div class="foot" id="footText">© 六爻起卦 IChing · Forever Chitanda · 易经六十四卦 · 仅供参考</div>
-<div id="visitCount" class="foot" style="margin-top:2px">👁 ···</div>
 <div class="toast" id="toast"></div>
 <canvas id="cv" style="display:none" width="420" height="600"></canvas>
 <script>
@@ -752,12 +751,6 @@ function autoToss(){
 
 // init theme
 (function(){try{applyTheme(localStorage.getItem('ichingTheme')||'dark');}catch(e){applyTheme('dark');}})();
-// visitor counter
-(function(){try{
-  fetch('https://api.countapi.xyz/hit/iching-tool/visits')
-    .then(r=>r.json()).then(d=>{const e=document.getElementById('visitCount');if(e)e.innerHTML='👁 '+d.value+' 次访问';})
-    .catch(()=>{});
-}catch(e){}})();
 </script>
 </body>
 </html>

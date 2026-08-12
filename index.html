@@ -3,25 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="六爻起卦 · 易经六十四卦在线占卜，三钱起卦法，支持测字与像素命盘合参。免费开源，中英双语，单文件即开即用。">
+<meta name="keywords" content="六爻,起卦,易经,周易,占卜,六十四卦,摇卦,免费,在线">
+<meta property="og:title" content="六爻起卦 · IChing Divination">
+<meta property="og:description" content="易经六十四卦在线占卜 · 三钱起卦法 · 免费开源 · 中英双语">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0d0d1a">
 <title>六爻起卦 · IChing Divination</title>
 <style>
-:root{--bg:#0d0d1a;--card:#13132b;--bdr:#1e3799;--accent:#4a69bd;--gold:#ffd700;--text:#c8d6e5;--dim:#7f8fa6;--m:#4CAF50;--f:#F44336;--e:#FF9800}
+:root{--bg:#0d0d1a;--card:#13132b;--bdr:#1e3799;--accent:#4a69bd;--gold:#ffd700;--text:#c8d6e5;--dim:#7f8fa6;--m:#4CAF50;--f:#F44336;--e:#FF9800;--inp:#0c0c22;--inpText:#f1f2f6;--mutedBdr:#2a2a4a;--foot:#576574;--grid:rgba(30,55,153,0.06);--inset:rgba(0,0,0,0.3);--soft:rgba(0,0,0,0.2)}
+html[data-theme="light"]{--bg:#eef1f8;--card:#ffffff;--bdr:#b8c4e8;--accent:#4a69bd;--gold:#b8860b;--text:#2f3542;--dim:#636e72;--inp:#e8ecf5;--inpText:#2f3542;--mutedBdr:#c8d0e5;--foot:#a4b0be;--grid:rgba(74,105,189,0.08);--inset:rgba(0,0,0,0.04);--soft:rgba(0,0,0,0.05)}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:'Courier New','Microsoft YaHei',monospace;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:16px 12px 40px;background-image:repeating-linear-gradient(0deg,transparent,transparent 31px,rgba(30,55,153,0.06) 31px,rgba(30,55,153,0.06) 32px),repeating-linear-gradient(90deg,transparent,transparent 31px,rgba(30,55,153,0.06) 31px,rgba(30,55,153,0.06) 32px)}
+body{background:var(--bg);color:var(--text);font-family:'Courier New','Microsoft YaHei',monospace;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:16px 12px 40px;background-image:repeating-linear-gradient(0deg,transparent,transparent 31px,var(--grid) 31px,var(--grid) 32px),repeating-linear-gradient(90deg,transparent,transparent 31px,var(--grid) 31px,var(--grid) 32px)}
 .hdr{text-align:center;margin:12px 0 20px}
 .hdr h1{font-size:26px;color:var(--gold);letter-spacing:5px;text-shadow:0 0 24px rgba(255,215,0,0.25)}
 .hdr .sub{color:var(--dim);font-size:12px;margin-top:3px;letter-spacing:2px}
 .hdr .author{font-size:10px;color:var(--dim);letter-spacing:2px;margin-top:4px}
-.card{background:var(--card);border:3px solid var(--bdr);padding:24px 28px 28px;max-width:520px;width:100%;position:relative;box-shadow:0 0 40px rgba(30,55,153,0.2),inset 0 0 60px rgba(0,0,0,0.3)}
+.card{background:var(--card);border:3px solid var(--bdr);padding:24px 28px 28px;max-width:520px;width:100%;position:relative;box-shadow:0 0 40px rgba(74,105,189,0.2),inset 0 0 60px var(--inset)}
 .card::before{content:'';position:absolute;top:-3px;left:-3px;right:-3px;bottom:-3px;border:1px solid var(--accent);pointer-events:none}
 .card::after{content:'';position:absolute;top:6px;left:6px;right:6px;bottom:6px;border:1px solid rgba(74,105,189,0.2);pointer-events:none}
 .lbl{display:block;color:var(--dim);font-size:11px;margin:10px 0 4px;letter-spacing:3px;text-transform:uppercase}
-input,textarea{width:100%;padding:10px 12px;background:#0c0c22;color:#f1f2f6;border:2px solid var(--bdr);font-size:14px;font-family:inherit;outline:none;resize:none;transition:border-color 0.2s}
+input,textarea{width:100%;padding:10px 12px;background:var(--inp);color:var(--inpText);border:2px solid var(--bdr);font-size:14px;font-family:inherit;outline:none;resize:none;transition:border-color 0.2s}
 input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 8px rgba(74,105,189,0.3)}
 .btn{width:100%;padding:14px;margin-top:14px;background:linear-gradient(180deg,#2c3e80,#1e2d6a);color:var(--gold);border:2px solid var(--accent);font-size:16px;font-family:inherit;cursor:pointer;letter-spacing:3px;transition:all 0.15s;text-shadow:0 0 8px rgba(255,215,0,0.3)}
 .btn:hover{background:linear-gradient(180deg,#3b50a0,#253d8a);border-color:var(--gold)}.btn:active{transform:scale(0.97)}
 .btn.sm{font-size:12px;padding:9px;letter-spacing:1px}
-.btn.muted{background:#0c0c22;color:var(--dim);border-color:#2a2a4a}.btn.muted:hover{color:var(--text);border-color:var(--accent)}
+.btn.muted{background:var(--inp);color:var(--dim);border-color:var(--mutedBdr)}.btn.muted:hover{color:var(--text);border-color:var(--accent)}
 .menu-bar{display:flex;justify-content:center;gap:16px;margin:0 0 12px;flex-wrap:wrap;align-items:center}
 .menu-bar a{color:var(--dim);font-size:11px;cursor:pointer;letter-spacing:2px;text-decoration:none;border-bottom:1px solid transparent;transition:all 0.2s}
 .menu-bar a:hover{color:var(--gold);border-color:var(--accent)}
@@ -45,16 +52,16 @@ input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 8px rgba(74
 .result-name{font-size:22px;color:var(--gold);letter-spacing:4px;text-align:center}
 .result-name-en{font-size:13px;color:var(--dim);text-align:center;margin-bottom:4px}
 .result-detail{font-size:12px;color:var(--dim);text-align:center;margin:4px 0}
-.changed-hex{text-align:center;margin:12px 0;padding:12px;background:#0c0c22;border:1px solid var(--bdr)}
+.changed-hex{text-align:center;margin:12px 0;padding:12px;background:var(--inp);border:1px solid var(--bdr)}
 .changed-hex .label{font-size:10px;color:var(--f)}
 .changed-hex .sym{font-size:48px;color:var(--e)}
 .changed-hex .name{font-size:16px;color:var(--e);letter-spacing:2px}
-.gua-text{padding:14px;background:#0c0c22;border:1px solid var(--bdr);margin:10px 0;font-size:12px;line-height:1.9}
+.gua-text{padding:14px;background:var(--inp);border:1px solid var(--bdr);margin:10px 0;font-size:12px;line-height:1.9}
 .gua-text .original{color:var(--gold);font-style:italic;margin-bottom:8px;font-size:14px}
 .gua-text .vernacular{color:var(--text)}
-.line-text{margin:4px 0;padding:6px 10px;font-size:11px;border-left:2px solid var(--bdr);background:rgba(0,0,0,0.2)}
+.line-text{margin:4px 0;padding:6px 10px;font-size:11px;border-left:2px solid var(--bdr);background:var(--soft)}
 .line-text.changing{border-color:var(--f);background:rgba(255,68,51,0.08)}
-.advice-box{padding:12px;background:#0c0c22;border:1px solid var(--bdr);margin:10px 0;text-align:center;font-size:12px;line-height:1.8}
+.advice-box{padding:12px;background:var(--inp);border:1px solid var(--bdr);margin:10px 0;text-align:center;font-size:12px;line-height:1.8}
 .share-box{display:flex;gap:8px;margin-top:10px}.share-box .btn{flex:1}
 .remark{text-align:center;color:var(--dim);font-size:10px;margin-top:16px;padding-top:12px;border-top:1px solid rgba(30,55,153,0.4);line-height:1.8}
 .tip{border-bottom:1px dashed var(--accent);cursor:help;position:relative;display:inline-block}
@@ -68,7 +75,7 @@ input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 8px rgba(74
 .modal-box h2{color:var(--gold);font-size:16px;letter-spacing:3px;margin-bottom:12px}
 .modal-box p,.modal-box li{font-size:11px;color:var(--text);line-height:1.8}
 .modal-close{position:absolute;top:12px;right:16px;color:var(--dim);font-size:20px;cursor:pointer;background:none;border:none;font-family:inherit}.modal-close:hover{color:var(--gold)}
-.bazi-box{margin-top:12px;padding:10px;background:rgba(74,105,189,0.08);border:1px solid var(--bdr);text-align:left}.bazi-toggle{display:flex;align-items:center;gap:7px;color:var(--gold);font-size:12px;cursor:pointer}.bazi-toggle input{width:auto}.bazi-fields{display:none;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:9px}.bazi-fields.show{display:grid}.bazi-fields label{font-size:10px;color:var(--dim)}.bazi-fields input,.bazi-fields select{width:100%;margin-top:3px;padding:7px;background:#0c0c22;color:var(--text);border:1px solid var(--bdr);font-family:inherit;font-size:12px}.bazi-note{font-size:10px;color:var(--dim);line-height:1.7;margin-top:7px}
+.bazi-box{margin-top:12px;padding:10px;background:rgba(74,105,189,0.08);border:1px solid var(--bdr);text-align:left}.bazi-toggle{display:flex;align-items:center;gap:7px;color:var(--gold);font-size:12px;cursor:pointer}.bazi-toggle input{width:auto}.bazi-fields{display:none;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:9px}.bazi-fields.show{display:grid}.bazi-fields label{font-size:10px;color:var(--dim)}.bazi-fields input,.bazi-fields select{width:100%;margin-top:3px;padding:7px;background:var(--inp);color:var(--text);border:1px solid var(--bdr);font-family:inherit;font-size:12px}.bazi-note{font-size:10px;color:var(--dim);line-height:1.7;margin-top:7px}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/lunar-javascript@1.6.13/lunar.min.js"></script>
 </head>
@@ -85,6 +92,8 @@ input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 8px rgba(74
 <span style="color:var(--bdr)">|</span>
 <a id="btnZh" class="active" onclick="setL('zh')">中</a>
 <a id="btnEn" onclick="setL('en')">EN</a>
+<a id="btnTheme" onclick="toggleTheme()" style="font-size:13px">🌙</a>
+<a onclick="openHistory()">🕘 <span id="tHist">历史</span></a>
 </div>
 
 <!-- INPUT -->
@@ -119,7 +128,10 @@ input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 8px rgba(74
 </div>
 <div style="text-align:center;color:var(--dim);font-size:11px" id="coinHint">点击铜钱摇卦</div>
 <div class="line-display" id="lineDisplay"></div>
-<button class="btn muted sm" onclick="resetAll()" style="margin-top:12px">↺ <span id="btnRedo">重新起卦</span></button>
+<div class="share-box" style="margin-top:12px">
+<button class="btn muted sm" onclick="autoToss()">🎲 <span id="btnAuto">自动摇卦</span></button>
+<button class="btn muted sm" onclick="resetAll()">↺ <span id="btnRedo">重新起卦</span></button>
+</div>
 </div>
 
 <!-- RESULT -->
@@ -253,13 +265,15 @@ function readBaziAssist(){
 
 function setL(l){
   lang=l;document.getElementById('btnZh').classList.toggle('active',l==='zh');document.getElementById('btnEn').classList.toggle('active',l==='en');
-  const D={zh:{guide:'使用说明',disclaim:'免责声明',about:'关于',lblQ:'你想问什么？（选填）',lblZ:'✍️ 测字（选填·输入一字/数字）',baziToggle:'⚔ 加入像素命盘合参（选填）',baziNote:'填写公历出生年月日时，摇卦后将命盘与卦象、测字合并解读。',btnStart:'开始摇卦',btnQuick:'快速起卦',remarkInput:'心诚则灵 · 一事一问 · 仅供文化参考',coinHint:'点击铜钱摇卦',btnRedo:'重新起卦',btnCopy:'复制卦象',btnDown:'下载卦象卡',btnTxt:'导出卦辞报告',btnBack:'重新起卦',remarkResult:'© 永远的兰兰 · Forever Chitanda · 仅供参考',footText:'© 六爻起卦 IChing · Forever Chitanda · 易经六十四卦 · 仅供参考',placeholder:'如：最近的事业发展如何？',waiting:'等待摇卦...',subtitle:'IChing Divination · 64 Hexagrams · 周易'}, 
-  en:{guide:'Guide',disclaim:'Disclaimer',about:'About',lblQ:'What do you want to ask? (optional)',lblZ:'✍️ CeZi (optional·input character/number)',baziToggle:'⚔ Add PixelBaZi synthesis (optional)',baziNote:'Enter Gregorian birth date and hour. The chart will be combined with the hexagram and character.',btnStart:'Start Casting',btnQuick:'Quick Cast',remarkInput:'One question per cast · Cultural reference only',coinHint:'Click coins to cast',btnRedo:'Start Over',btnCopy:'Copy Reading',btnDown:'Download Card',btnTxt:'Export Report',btnBack:'Start Over',remarkResult:'© Forever Chitanda · Cultural reference only',footText:'© IChing Divination · Forever Chitanda · Book of Changes · Reference Only',placeholder:'e.g. How will my career develop?',waiting:'Waiting for toss...',subtitle:'IChing Divination · 64 Hexagrams · Zhou Yi'}};
+  const D={zh:{guide:'使用说明',disclaim:'免责声明',about:'关于',lblQ:'你想问什么？（选填）',lblZ:'✍️ 测字（选填·输入一字/数字）',baziToggle:'⚔ 加入像素命盘合参（选填）',baziNote:'填写公历出生年月日时，摇卦后将命盘与卦象、测字合并解读。',btnStart:'开始摇卦',btnQuick:'快速起卦',remarkInput:'心诚则灵 · 一事一问 · 仅供文化参考',coinHint:'点击铜钱摇卦',btnRedo:'重新起卦',btnCopy:'复制卦象',btnDown:'下载卦象卡',btnTxt:'导出卦辞报告',btnBack:'重新起卦',remarkResult:'© 永远的兰兰 · Forever Chitanda · 仅供参考',footText:'© 六爻起卦 IChing · Forever Chitanda · 易经六十四卦 · 仅供参考',placeholder:'如：最近的事业发展如何？',waiting:'等待摇卦...',subtitle:'IChing Divination · 64 Hexagrams · 周易',btnAuto:'自动摇卦',tHist:'历史'}, 
+  en:{guide:'Guide',disclaim:'Disclaimer',about:'About',lblQ:'What do you want to ask? (optional)',lblZ:'✍️ CeZi (optional·input character/number)',baziToggle:'⚔ Add PixelBaZi synthesis (optional)',baziNote:'Enter Gregorian birth date and hour. The chart will be combined with the hexagram and character.',btnStart:'Start Casting',btnQuick:'Quick Cast',remarkInput:'One question per cast · Cultural reference only',coinHint:'Click coins to cast',btnRedo:'Start Over',btnCopy:'Copy Reading',btnDown:'Download Card',btnTxt:'Export Report',btnBack:'Start Over',remarkResult:'© Forever Chitanda · Cultural reference only',footText:'© IChing Divination · Forever Chitanda · Book of Changes · Reference Only',placeholder:'e.g. How will my career develop?',waiting:'Waiting for toss...',subtitle:'IChing Divination · 64 Hexagrams · Zhou Yi',btnAuto:'Auto Cast',tHist:'History'}};
   const d=D[l];
   ['guide','disclaim','about','lblQ','lblZ','btnStart','btnQuick','remarkInput','coinHint','btnRedo','btnCopy','btnDown','btnTxt','btnBack','remarkResult','footText','subtitle'].forEach(k=>{const el=document.getElementById(k==='guide'?'tGuide':k==='disclaim'?'tDisclaim':k==='about'?'tAbout':k==='subtitle'?'subtitle':k==='lblQ'?'lblQ':k==='lblZ'?'lblZ':k==='btnStart'?'btnStart':k==='btnQuick'?'btnQuick':k==='remarkInput'?'remarkInput':k==='coinHint'?'coinHint':k==='btnRedo'?'btnRedo':k==='btnCopy'?'btnCopy':k==='btnDown'?'btnDown':k==='btnTxt'?'btnTxt':k==='btnBack'?'btnBack':k==='remarkResult'?'remarkResult':k==='footText'?'footText':k);if(el)el.textContent=d[k];});
   document.getElementById('question').placeholder=d.placeholder;
   document.getElementById('baziToggleText').textContent=d.baziToggle;
   document.getElementById('baziNote').textContent=d.baziNote;
+  const ea=document.getElementById('btnAuto');if(ea)ea.textContent=d.btnAuto;
+  const th=document.getElementById('tHist');if(th)th.textContent=d.tHist;
   if(document.getElementById('resultPage').style.display==='block')renderResult();
 }
 
@@ -284,7 +298,7 @@ function quickToss(){
   document.getElementById('inputPage').style.display='none';
   document.getElementById('tossPage').style.display='none';
   document.getElementById('resultPage').style.display='block';
-  renderResult();
+  renderResult();saveHistory();
 }
 
 function tossCoin(){
@@ -301,7 +315,7 @@ function tossCoin(){
       setTimeout(()=>{
         document.getElementById('tossPage').style.display='none';
         document.getElementById('resultPage').style.display='block';
-        renderResult();
+        renderResult();saveHistory();
       },500);
     }
     updateTossUI();
@@ -401,7 +415,7 @@ function renderResult(){
     advice+=`<div style="padding:12px;background:rgba(74,105,189,0.08);border:2px solid var(--accent);margin-top:10px;text-align:left">`;
     advice+=`<div style="font-size:14px;color:var(--gold);text-align:center;margin-bottom:8px"><b>🪙 ${l==='zh'?'卦字合参':'Synthesis'}</b> <span style="font-size:10px;color:var(--dim);${l==='zh'?'':'display:none'}">${rel}</span></div>`;
     advice+=`<div style="text-align:center;font-size:22px;margin-bottom:6px">${h.sym} <span style="color:var(--accent)">+</span> <b style="color:var(--gold)">「${z.text}」</b></div>`;
-    advice+=`<div style="font-size:13px;color:var(--text);line-height:2.2;padding:8px;background:rgba(0,0,0,0.2)">${relDesc}</div>`;
+    advice+=`<div style="font-size:13px;color:var(--text);line-height:2.2;padding:8px;background:var(--soft)">${relDesc}</div>`;
     advice+=`<div style="margin-top:6px;font-size:11px;color:var(--dim);line-height:1.8;text-align:center">`;
     advice+=l==='zh'?`<b>卦曰</b>「${h.gc}」 <b>字曰</b>「${z.pool.t}」<br>${rel==='同气'?'万法归一，所求可成。':rel==='相生'?'相生相济，水到渠成。':rel==='相克'?'克己复礼，先难后获。':'殊途同归，自有天意。'}`:`<b>Hexagram</b> "${h.gc}" <b>Character</b> "${z.pool.e}"<br>${rel==='同气'?'Signals align. Trust your path.':rel==='相生'?'Nourishing flow. Results will come.':rel==='相克'?'Resistance breeds strength.':'Different paths, same destination.'}`;
     advice+=`</div></div>`;
@@ -415,7 +429,7 @@ function renderResult(){
     advice+=`<div style="padding:12px;background:rgba(255,215,0,0.07);border:2px solid var(--gold);margin:12px 0;text-align:left">`;
     advice+=`<div style="font-size:14px;color:var(--gold);text-align:center;margin-bottom:7px"><b>⚔ ${l==='zh'?'命卦合参':'Chart × Hexagram Synthesis'}</b></div>`;
     advice+=`<div style="font-size:12px;line-height:2;color:var(--text)">${l==='zh'?`日主：${b.dayStem}（${be}） · 最旺：${b.strongest} · 偏弱：${b.weakest}<br>本卦：${h.zh}（${ue}/${le}） · 关系：<b>${relation}</b>`:`Day stem: ${b.dayStem} (${be}) · Strongest: ${b.strongest} · Weakest: ${b.weakest}<br>Hexagram: ${h.en} (${ue}/${le}) · Relation: <b>${relation}</b>`}</div>`;
-    advice+=`<div style="margin-top:7px;padding:8px;background:rgba(0,0,0,0.18);font-size:13px;line-height:2">${qAdvice}</div>`;
+    advice+=`<div style="margin-top:7px;padding:8px;background:var(--soft);font-size:13px;line-height:2">${qAdvice}</div>`;
     advice+=`<div style="margin-top:7px;color:var(--dim);font-size:10px;line-height:1.8">${l==='zh'?'命盘看长期倾向，卦象看当下时机，测字看心念细节；三者合参只作参考，不代替现实判断。':'The chart reflects long-term tendencies, the hexagram current timing, and the character your immediate intention. Use this as reflection, not a substitute for judgment.'}</div></div>`;
   }
 
@@ -424,10 +438,10 @@ function renderResult(){
   advice+=dailyG;
   // Lucky info
   const lucky=luckyInfo(h,l);
-  advice+=`<div style="padding:10px;background:#0c0c22;border:1px solid var(--bdr);margin-top:6px">`;
+  advice+=`<div style="padding:10px;background:var(--inp);border:1px solid var(--bdr);margin-top:6px">`;
   advice+=`<div style="font-size:14px;color:var(--gold);margin-bottom:6px;text-align:center"><b>${lucky.title}</b></div>`;
   advice+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">`;
-  lucky.items.forEach(it=>{advice+=`<div style="padding:6px 10px;background:rgba(0,0,0,0.2);border:1px solid var(--bdr);text-align:center;font-size:11px"><span style="color:var(--dim)">${it.label}</span><br><b style="color:var(--gold);font-size:14px">${it.val}</b></div>`;});
+  lucky.items.forEach(it=>{advice+=`<div style="padding:6px 10px;background:var(--soft);border:1px solid var(--bdr);text-align:center;font-size:11px"><span style="color:var(--dim)">${it.label}</span><br><b style="color:var(--gold);font-size:14px">${it.val}</b></div>`;});
   advice+=`</div></div>`;
 
   // Summary
@@ -462,12 +476,12 @@ function generateDaily(h,l){
     {icon:'🍽️',label:'Diet',good:true,text:'Balanced meals recommended. Stay hydrated. Warm foods over cold. Eat until 70-80% full. Moderation in all things.'},
     {icon:'🤝',label:'Social',good:isAusp,text:isAusp?'Social energy is positive. Good day to reconnect with old friends. Sincerity is your best social asset.':'Social interactions require care. Listen more than you speak. Protect your boundaries. Solitude can be restorative.'}
   ];
-  let html=`<div style="padding:10px;background:#0c0c22;border:1px solid var(--bdr);margin-top:6px">`;
+  let html=`<div style="padding:10px;background:var(--inp);border:1px solid var(--bdr);margin-top:6px">`;
   html+=`<div style="font-size:14px;color:var(--gold);margin-bottom:8px;text-align:center"><b>${l==='zh'?'📅 今日综合运势':'📅 Daily Guidance'}</b></div>`;
   html+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">`;
   items.forEach(it=>{
     const cl=it.good?'var(--m)':'var(--f)';
-    html+=`<div style="padding:8px;background:rgba(0,0,0,0.2);border:1px solid var(--bdr);font-size:11px">`;
+    html+=`<div style="padding:8px;background:var(--soft);border:1px solid var(--bdr);font-size:11px">`;
     html+=`<div style="margin-bottom:4px"><span style="font-size:14px">${it.icon}</span> <b style="color:${cl};font-size:12px">${it.label}</b></div>`;
     html+=`<div style="color:var(--dim);line-height:1.8">${it.text||(it.good?'Good':'Caution needed')}</div>`;
     html+=`</div>`;
@@ -607,18 +621,136 @@ function downloadText(){
   a.href=URL.createObjectURL(blob);document.body.appendChild(a);a.click();document.body.removeChild(a);
   showT('📄 '+{zh:'报告已导出',en:'Report exported'}[l]);
 }
-function resetAll(){document.getElementById('inputPage').style.display='block';document.getElementById('tossPage').style.display='none';document.getElementById('resultPage').style.display='none';}
+function resetAll(){if(autoTimer){clearInterval(autoTimer);autoTimer=null;}document.getElementById('inputPage').style.display='block';document.getElementById('tossPage').style.display='none';document.getElementById('resultPage').style.display='none';}
 
 function openM(type){
   const l=lang;
-  const c={guide:l==='zh'?`<h2>📖 使用说明</h2><p><b>第一步：</b>输入问题（选填）。</p><p><b>第二步：</b>点击铜钱摇卦，共6次，从下往上记录六爻。</p><p><b>第三步：</b>查看本卦、变爻、之卦及解读。</p><p><b>算法：</b>三钱起卦法，6=老阴(变阳)，7=少阳，8=少阴，9=老阳(变阴)。</p>`:`<h2>📖 Guide</h2><p><b>Step 1:</b> Type your question (optional).</p><p><b>Step 2:</b> Click coins 6 times to build the hexagram from bottom to top.</p><p><b>Step 3:</b> View your hexagram, changing lines, and interpretation.</p><p><b>Method:</b> 3 coins, 6=Old Yin(changes), 7=Yang, 8=Yin, 9=Old Yang(changes).</p>`,
-  disclaim:l==='zh'?`<h2>⚠️ 免责声明</h2><p>基于易经六十四卦学说，<b>仅供文化研究和娱乐参考</b>。不代表科学预测，请勿作为重大决策依据。</p>`:`<h2>⚠️ Disclaimer</h2><p>Based on the I Ching, <b>for cultural reference & entertainment only</b>. Not scientific predictions.</p>`,
-  about:l==='zh'?`<h2>ℹ️ 关于</h2><p><b>六爻起卦</b> · 基于周易六十四卦 · 三钱起卦法</p><p>作者：永远的兰兰 (Forever Chitanda)</p><p style="margin-top:12px"><b>GitHub:</b> github.com/podcatcher962/IChing</p><p style="margin-top:12px;color:var(--dim);font-size:10px">在线体验：podcatcher962.github.io/IChing</p>`:`<h2>ℹ️ About</h2><p><b>IChing Divination</b> · 64 Hexagrams · Three-coin method</p><p>Author: Forever Chitanda (永远的兰兰)</p><p style="margin-top:12px"><b>GitHub:</b> github.com/podcatcher962/IChing</p><p style="margin-top:12px;color:var(--dim);font-size:10px">Online: podcatcher962.github.io/IChing</p>`};
+  const c={
+  guide:l==='zh'?`<h2>📖 使用说明</h2><p><b>第一步：</b>输入问题（选填）。</p><p><b>第二步：</b>点击铜钱摇卦，共6次，从下往上记录六爻。</p><p><b>第三步：</b>查看本卦、变爻、之卦及解读。</p><p><b>算法：</b>三钱起卦法，6=老阴(变阳)，7=少阳，8=少阴，9=老阳(变阴)。</p>`:`<h2>📖 Guide</h2><p><b>Step 1:</b> Type your question (optional).</p><p><b>Step 2:</b> Click coins 6 times to build the hexagram from bottom to top.</p><p><b>Step 3:</b> View your hexagram, changing lines, and interpretation.</p><p><b>Method:</b> 3 coins, 6=Old Yin(changes), 7=Yang, 8=Yin, 9=Old Yang(changes).</p>`,
+  disclaim:l==='zh'?`<h2>⚠️ 免责声明</h2>
+<p><b>1. 性质说明</b><br>本工具基于《周易》六十四卦及传统三钱起卦法制作，输出内容属<b>传统文化研究与娱乐</b>范畴，并非科学预测，亦不代表任何确定性论断。</p>
+<p><b>2. 结果的多义性</b><br>摇卦结果具有随机性与多义性，同一卦象在不同情境、不同心境下解读迥异。卦辞解读仅供参考，不构成对未来的具体预言。</p>
+<p><b>3. 不提供专业建议</b><br>本工具不提供任何医疗、法律、投资、婚恋等专业建议。涉及上述领域的重要决定，请务必咨询具备资质的专业人士。</p>
+<p><b>4. 决策责任</b><br>请勿将起卦结果作为重大人生决策（如职业选择、财务安排、健康方案等）的唯一依据。您的人生由您的行动与选择决定，而非卦象。</p>
+<p><b>5. 数据与隐私</b><br>本工具为纯前端单文件应用，无服务器、无第三方跟踪。您的输入仅保存在本地浏览器（localStorage），不会上传任何数据；清除浏览器数据即可彻底删除。</p>
+<p><b>6. 知识产权</b><br>本工具代码以开源形式发布，仅限个人学习与娱乐使用。请勿用于任何商业牟利行为。</p>
+<p>继续使用本工具即表示您已阅读、理解并同意以上全部条款。祝您玩得开心，生活顺遂。</p>`:`<h2>⚠️ Disclaimer</h2>
+<p><b>1. Nature:</b> Built upon the I Ching and the traditional three-coin method, this tool is for <b>cultural study and entertainment</b>. It is not scientific prediction nor definitive assertion.</p>
+<p><b>2. Ambiguity:</b> Casting results are random and multifaceted. The same hexagram reads differently across contexts and mindsets. Interpretations are reference only.</p>
+<p><b>3. No professional advice:</b> This tool provides no medical, legal, financial, or relationship advice. For major decisions in these areas, consult qualified professionals.</p>
+<p><b>4. Decision responsibility:</b> Never use casting results as the sole basis for major life decisions. Your life is shaped by your actions and choices, not by hexagrams.</p>
+<p><b>5. Data &amp; privacy:</b> Pure front-end single-file app. No server, no tracking. Inputs stay in your browser's localStorage only; clearing browser data removes everything.</p>
+<p><b>6. Intellectual property:</b> Open-sourced for personal study and entertainment. Commercial misuse is prohibited.</p>
+<p>By using this tool you acknowledge and accept all terms above. Enjoy and stay well.</p>`,
+  about:l==='zh'?`<h2>ℹ️ 关于本工具</h2>
+<p><b>六爻起卦 · IChing Divination</b> — 一款基于《周易》六十四卦的在线占卜工具，采用传统三钱起卦法，将千年易学以简洁现代的方式呈现。</p>
+<p><b>核心功能</b></p>
+<ul style="margin:4px 0 0 18px;line-height:2;font-size:12px">
+<li>🪙 三钱起卦：点击铜钱逐爻起卦，真实还原传统仪式</li>
+<li>📜 六十四卦全解：卦辞、彖辞、爻辞、象辞俱全</li>
+<li>🔁 变爻推演：自动计算变爻，展示本卦与变卦</li>
+<li>✍️ 测字占卜：结合测字与卦象双重解读</li>
+<li>⚔️ 命盘合参：可选八字命盘与卦象交叉解读</li>
+<li>🎴 卦象卡片：一键生成精美卦象卡并下载 PNG</li>
+<li>📄 报告导出：完整卦辞报告导出为文本</li>
+<li>🌐 中英双语：一键切换，支持全球用户</li>
+<li>🌙 亮暗主题：暗夜护眼，随心切换</li>
+</ul>
+<p><b>技术说明</b><br>纯前端单文件 HTML/CSS/JS，无后端、无依赖、无数据上传，浏览器打开即用，可离线保存本地使用。</p>
+<p><b>作者：</b>永远的兰兰 (Forever Chitanda)</p>
+<p><b>开源地址：</b><a href="https://github.com/podcatcher962/IChing" target="_blank" style="color:var(--accent)">github.com/podcatcher962/IChing</a></p>
+<p><b>在线体验：</b><a href="https://podcatcher962.github.io/IChing" target="_blank" style="color:var(--accent)">podcatcher962.github.io/IChing</a></p>
+<p style="margin-top:10px;color:var(--dim);font-size:10px">© 永远的兰兰 · Forever Chitanda · 2026 · 仅供文化参考</p>`:`<h2>ℹ️ About</h2>
+<p><b>IChing Divination</b> — an online divination tool based on the 64 hexagrams of the Book of Changes, using the traditional three-coin method.</p>
+<p><b>Features</b></p>
+<ul style="margin:4px 0 0 18px;line-height:2;font-size:12px">
+<li>🪙 Three-coin casting with authentic ritual feel</li>
+<li>📜 Full 64-hexagram interpretations</li>
+<li>🔁 Changing lines &amp; derived hexagram</li>
+<li>✍️ Character divination (CeZi) combined reading</li>
+<li>⚔️ Optional BaZi chart synthesis</li>
+<li>🎴 Beautiful card download as PNG</li>
+<li>📄 Full report export as text</li>
+<li>🌐 Bilingual: Chinese / English</li>
+<li>🌙 Light &amp; dark themes</li>
+</ul>
+<p><b>Tech:</b> Single-file front-end HTML/CSS/JS. No backend, no tracking, no data upload. Works offline.</p>
+<p><b>Author:</b> Forever Chitanda (永远的兰兰)</p>
+<p><b>Source:</b> <a href="https://github.com/podcatcher962/IChing" target="_blank" style="color:var(--accent)">github.com/podcatcher962/IChing</a></p>
+<p><b>Online:</b> <a href="https://podcatcher962.github.io/IChing" target="_blank" style="color:var(--accent)">podcatcher962.github.io/IChing</a></p>
+<p style="margin-top:10px;color:var(--dim);font-size:10px">© Forever Chitanda · 2026 · For cultural reference only</p>`};
   document.getElementById('modalBox').innerHTML=`<button class="modal-close" onclick="closeM()">✕</button>${c[type]||''}`;
   document.getElementById('modalOverlay').classList.add('show');
 }
 function closeM(){document.getElementById('modalOverlay').classList.remove('show');}
 function showT(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._tid);t._tid=setTimeout(()=>t.classList.remove('show'),2200);}
+
+// ========== THEME ==========
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  const b=document.getElementById('btnTheme');if(b)b.textContent=t==='light'?'☀️':'🌙';
+}
+function toggleTheme(){
+  const cur=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+  applyTheme(cur);try{localStorage.setItem('ichingTheme',cur);}catch(e){}
+  showT(cur==='light'?'☀️ 已切换亮色主题':'🌙 已切换暗色主题');
+}
+
+// ========== HISTORY ==========
+function saveHistory(){
+  try{
+    const h=state.hexagram;if(!h)return;
+    const rec={t:Date.now(),q:state.question,zi:state.zi,hex:h.zh,hexEn:h.en,sym:h.sym,lines:state.lines.map(l=>l.value),chg:state.changed&&state.changed!==h?{sym:state.changed.sym,zh:state.changed.zh}:null,bazi:state.bazi?{dayStem:state.bazi.dayStem,dayElem:state.bazi.dayElem}:null};
+    let arr=JSON.parse(localStorage.getItem('ichingHistory')||'[]');
+    arr.unshift(rec);if(arr.length>30)arr=arr.slice(0,30);
+    localStorage.setItem('ichingHistory',JSON.stringify(arr));
+  }catch(e){}
+}
+function openHistory(){
+  let arr=[];try{arr=JSON.parse(localStorage.getItem('ichingHistory')||'[]');}catch(e){}
+  if(arr.length===0){showT(lang==='zh'?'暂无历史记录':'No history yet');return;}
+  const l=lang;
+  let html=`<h2>🕘 ${l==='zh'?'历史卦象':'History'}</h2><div style="max-height:50vh;overflow-y:auto">`;
+  arr.forEach((r,i)=>{
+    const d=new Date(r.t);
+    html+=`<div onclick="loadHistory(${i})" style="padding:10px;border:1px solid var(--bdr);margin:6px 0;cursor:pointer;background:var(--inp)">`;
+    html+=`<div style="font-size:16px;color:var(--gold)">${r.sym} ${l==='zh'?r.hex:r.hexEn}${r.chg?` → ${r.chg.sym} ${r.chg.zh}`:''}</div>`;
+    html+=`<div style="font-size:10px;color:var(--dim);margin-top:4px">${d.toLocaleString()}${r.q?' · '+r.q:''}</div>`;
+    html+=`</div>`;
+  });
+  html+=`</div><div style="margin-top:10px;text-align:center"><button class="btn muted sm" onclick="clearHistory()">🗑 ${l==='zh'?'清空历史':'Clear'}</button></div>`;
+  document.getElementById('modalBox').innerHTML=`<button class="modal-close" onclick="closeM()">✕</button>${html}`;
+  document.getElementById('modalOverlay').classList.add('show');
+}
+function loadHistory(i){
+  let arr=[];try{arr=JSON.parse(localStorage.getItem('ichingHistory')||'[]');}catch(e){}
+  const r=arr[i];if(!r)return;
+  state.hexagram=HEXAGRAMS.find(h=>h.zh===r.hex)||HEXAGRAMS[0];
+  state.question=r.q||'';state.zi=r.zi||'';
+  state.lines=r.lines.map(v=>({value:v,label:LINE_LABELS[v]}));
+  state.changingIdx=[];r.lines.forEach((v,idx)=>{if(v===6||v===9)state.changingIdx.push(idx);});
+  state.changed=null;
+  if(r.chg){const ch=HEXAGRAMS.find(h=>h.zh===r.chg.zh);if(ch&&ch!==state.hexagram)state.changed=ch;}
+  state.bazi=r.bazi||null;
+  closeM();
+  document.getElementById('inputPage').style.display='none';
+  document.getElementById('tossPage').style.display='none';
+  document.getElementById('resultPage').style.display='block';
+  renderResult();
+}
+function clearHistory(){try{localStorage.removeItem('ichingHistory');}catch(e){}closeM();showT(lang==='zh'?'🗑 历史已清空':'🗑 History cleared');}
+
+// ========== AUTO TOSS ==========
+let autoTimer=null;
+function autoToss(){
+  if(state.step>=6)return;
+  if(autoTimer)return;
+  showT(lang==='zh'?'🎲 自动摇卦中...':'🎲 Auto casting...');
+  autoTimer=setInterval(()=>{tossCoin();if(state.step>=6){clearInterval(autoTimer);autoTimer=null;}},650);
+}
+
+// init theme
+(function(){try{applyTheme(localStorage.getItem('ichingTheme')||'dark');}catch(e){applyTheme('dark');}})();
 </script>
 </body>
 </html>

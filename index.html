@@ -83,7 +83,7 @@ input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 8px rgba(74
 <div class="hdr">
 <h1>🪙 六爻起卦</h1>
 <div class="sub" id="subtitle">IChing Divination · 64 Hexagrams · 周易</div>
-<div class="author">© 永远的兰兰 · Forever Chitanda</div>
+<div class="author">© 永远的兰兰 · Lanlan Eternal</div>
 </div>
 <div class="menu-bar">
 <a onclick="openM('guide')">📖 <span id="tGuide">使用说明</span></a>
@@ -150,11 +150,11 @@ input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 8px rgba(74
 <button class="btn" onclick="downloadText()">📄 <span id="btnTxt">导出卦辞报告</span></button>
 </div>
 <button class="btn muted sm" style="margin-top:8px" onclick="resetAll()">↺ <span id="btnBack">重新起卦</span></button>
-<div class="remark" id="remarkResult">© 永远的兰兰 · Forever Chitanda · 仅供参考</div>
+<div class="remark" id="remarkResult">© 永远的兰兰 · Lanlan Eternal · 仅供参考</div>
 </div>
 
 <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeM()"><div class="modal-box" id="modalBox"></div></div>
-<div class="foot" id="footText">© 六爻起卦 IChing · Forever Chitanda · 易经六十四卦 · 仅供参考</div>
+<div class="foot" id="footText">© 六爻起卦 IChing · Lanlan Eternal · 易经六十四卦 · 仅供参考</div>
 <div class="foot" style="margin-top:4px">🧰 系列工具 · <a href="https://podcatcher962.github.io/PixelBaZi/" target="_blank" rel="noopener">⚔ 像素命盘</a> · <a href="https://podcatcher962.github.io/IChing/" target="_blank" rel="noopener">🪙 六爻起卦</a> · <a href="https://podcatcher962.github.io/YuguTether/" target="_blank" rel="noopener">📜 与古为徒</a></div>
 <div class="toast" id="toast"></div>
 <canvas id="cv" style="display:none" width="420" height="600"></canvas>
@@ -266,8 +266,8 @@ function readBaziAssist(){
 
 function setL(l){
   lang=l;document.getElementById('btnZh').classList.toggle('active',l==='zh');document.getElementById('btnEn').classList.toggle('active',l==='en');
-  const D={zh:{guide:'使用说明',disclaim:'免责声明',about:'关于',lblQ:'你想问什么？（选填）',lblZ:'✍️ 测字（选填·输入一字/数字）',baziToggle:'⚔ 加入像素命盘合参（选填）',baziNote:'填写公历出生年月日时，摇卦后将命盘与卦象、测字合并解读。',btnStart:'开始摇卦',btnQuick:'快速起卦',remarkInput:'心诚则灵 · 一事一问 · 仅供文化参考',coinHint:'点击铜钱摇卦',btnRedo:'重新起卦',btnCopy:'复制卦象',btnDown:'下载卦象卡',btnTxt:'导出卦辞报告',btnBack:'重新起卦',remarkResult:'© 永远的兰兰 · Forever Chitanda · 仅供参考',footText:'© 六爻起卦 IChing · Forever Chitanda · 易经六十四卦 · 仅供参考',placeholder:'如：最近的事业发展如何？',waiting:'等待摇卦...',subtitle:'IChing Divination · 64 Hexagrams · 周易',btnAuto:'自动摇卦',tHist:'历史'}, 
-  en:{guide:'Guide',disclaim:'Disclaimer',about:'About',lblQ:'What do you want to ask? (optional)',lblZ:'✍️ CeZi (optional·input character/number)',baziToggle:'⚔ Add PixelBaZi synthesis (optional)',baziNote:'Enter Gregorian birth date and hour. The chart will be combined with the hexagram and character.',btnStart:'Start Casting',btnQuick:'Quick Cast',remarkInput:'One question per cast · Cultural reference only',coinHint:'Click coins to cast',btnRedo:'Start Over',btnCopy:'Copy Reading',btnDown:'Download Card',btnTxt:'Export Report',btnBack:'Start Over',remarkResult:'© Forever Chitanda · Cultural reference only',footText:'© IChing Divination · Forever Chitanda · Book of Changes · Reference Only',placeholder:'e.g. How will my career develop?',waiting:'Waiting for toss...',subtitle:'IChing Divination · 64 Hexagrams · Zhou Yi',btnAuto:'Auto Cast',tHist:'History'}};
+  const D={zh:{guide:'使用说明',disclaim:'免责声明',about:'关于',lblQ:'你想问什么？（选填）',lblZ:'✍️ 测字（选填·输入一字/数字）',baziToggle:'⚔ 加入像素命盘合参（选填）',baziNote:'填写公历出生年月日时，摇卦后将命盘与卦象、测字合并解读。',btnStart:'开始摇卦',btnQuick:'快速起卦',remarkInput:'心诚则灵 · 一事一问 · 仅供文化参考',coinHint:'点击铜钱摇卦',btnRedo:'重新起卦',btnCopy:'复制卦象',btnDown:'下载卦象卡',btnTxt:'导出卦辞报告',btnBack:'重新起卦',remarkResult:'© 永远的兰兰 · Lanlan Eternal · 仅供参考',footText:'© 六爻起卦 IChing · Lanlan Eternal · 易经六十四卦 · 仅供参考',placeholder:'如：最近的事业发展如何？',waiting:'等待摇卦...',subtitle:'IChing Divination · 64 Hexagrams · 周易',btnAuto:'自动摇卦',tHist:'历史'}, 
+  en:{guide:'Guide',disclaim:'Disclaimer',about:'About',lblQ:'What do you want to ask? (optional)',lblZ:'✍️ CeZi (optional·input character/number)',baziToggle:'⚔ Add PixelBaZi synthesis (optional)',baziNote:'Enter Gregorian birth date and hour. The chart will be combined with the hexagram and character.',btnStart:'Start Casting',btnQuick:'Quick Cast',remarkInput:'One question per cast · Cultural reference only',coinHint:'Click coins to cast',btnRedo:'Start Over',btnCopy:'Copy Reading',btnDown:'Download Card',btnTxt:'Export Report',btnBack:'Start Over',remarkResult:'© Lanlan Eternal · Cultural reference only',footText:'© IChing Divination · Lanlan Eternal · Book of Changes · Reference Only',placeholder:'e.g. How will my career develop?',waiting:'Waiting for toss...',subtitle:'IChing Divination · 64 Hexagrams · Zhou Yi',btnAuto:'Auto Cast',tHist:'History'}};
   const d=D[l];
   ['guide','disclaim','about','lblQ','lblZ','btnStart','btnQuick','remarkInput','coinHint','btnRedo','btnCopy','btnDown','btnTxt','btnBack','remarkResult','footText','subtitle'].forEach(k=>{const el=document.getElementById(k==='guide'?'tGuide':k==='disclaim'?'tDisclaim':k==='about'?'tAbout':k==='subtitle'?'subtitle':k==='lblQ'?'lblQ':k==='lblZ'?'lblZ':k==='btnStart'?'btnStart':k==='btnQuick'?'btnQuick':k==='remarkInput'?'remarkInput':k==='coinHint'?'coinHint':k==='btnRedo'?'btnRedo':k==='btnCopy'?'btnCopy':k==='btnDown'?'btnDown':k==='btnTxt'?'btnTxt':k==='btnBack'?'btnBack':k==='remarkResult'?'remarkResult':k==='footText'?'footText':k);if(el)el.textContent=d[k];});
   document.getElementById('question').placeholder=d.placeholder;
@@ -576,7 +576,7 @@ function drawCard(){
   c.font='18px "Courier New"';
   for(let i=5;i>=0;i--){const lv=state.lines[i];const v=lv?lv.value:7;const y=250+(5-i)*28;const ic=state.changingIdx.includes(i);c.fillStyle=ic?'#F44336':(v===7||v===9)?'#ffd700':'#7f8fa6';c.textAlign='left';c.fillText(v===7||v===9?'━━━━━━━':'━   ━',120,y);c.font='9px "Courier New"';c.fillText((l==='zh'?'第':'Line ')+(6-i)+(l==='zh'?'爻':''),50,y+4);if(ic){c.fillStyle='#F44336';c.font='bold 10px "Courier New"';c.fillText(l==='zh'?'◀ 变':'◀ CH',290,y+4);}c.font='18px "Courier New"';}
   if(state.changed&&state.changed!==h){c.beginPath();c.moveTo(20,400);c.lineTo(W-20,400);c.strokeStyle='#1e3799';c.stroke();c.fillStyle='#F44336';c.font='bold 12px "Courier New"';c.textAlign='center';c.fillText(l==='zh'?'变爻 → 之卦':'Changing → Transformed',W/2,420);c.font='48px serif';c.fillStyle='#ff9800';c.fillText(state.changed.sym,W/2,465);c.font='bold 16px "Microsoft YaHei","Courier New"';c.fillText(l==='zh'?state.changed.zh:state.changed.en,W/2,495);}
-  c.fillStyle='#4a69bd';c.font='9px "Courier New"';c.textAlign='center';c.fillText('© IChing · Forever Chitanda',W/2,H-20);
+  c.fillStyle='#4a69bd';c.font='9px "Courier New"';c.textAlign='center';c.fillText('© IChing · Lanlan Eternal',W/2,H-20);
 }
 
 function copyShare(){
@@ -616,7 +616,7 @@ function downloadText(){
   }
   lines.push('');
   lines.push('='.repeat(40));
-  lines.push({zh:'仅供文化参考 · © 永远的兰兰 · Forever Chitanda',en:'Cultural reference only · © Forever Chitanda'}[l]);
+  lines.push({zh:'仅供文化参考 · © 永远的兰兰 · Lanlan Eternal',en:'Cultural reference only · © Lanlan Eternal'}[l]);
   const blob=new Blob(['\ufeff'+lines.join('\r\n')],{type:'text/plain;charset=utf-8'});
   const a=document.createElement('a');a.download='iching_report_'+Date.now()+'.txt';
   a.href=URL.createObjectURL(blob);document.body.appendChild(a);a.click();document.body.removeChild(a);
@@ -658,10 +658,10 @@ function openM(type){
 <li>🌙 亮暗主题：暗夜护眼，随心切换</li>
 </ul>
 <p><b>技术说明</b><br>纯前端单文件 HTML/CSS/JS，无后端、无依赖、无数据上传，浏览器打开即用，可离线保存本地使用。</p>
-<p><b>作者：</b>永远的兰兰 (Forever Chitanda)</p>
+<p><b>作者：</b>永远的兰兰 (Lanlan Eternal)</p>
 <p><b>开源地址：</b><a href="https://github.com/podcatcher962/IChing" target="_blank" style="color:var(--accent)">github.com/podcatcher962/IChing</a></p>
 <p><b>在线体验：</b><a href="https://podcatcher962.github.io/IChing" target="_blank" style="color:var(--accent)">podcatcher962.github.io/IChing</a></p>
-<p style="margin-top:10px;color:var(--dim);font-size:10px">© 永远的兰兰 · Forever Chitanda · 2026 · 仅供文化参考</p>`:`<h2>ℹ️ About</h2>
+<p style="margin-top:10px;color:var(--dim);font-size:10px">© 永远的兰兰 · Lanlan Eternal · 2026 · 仅供文化参考</p>`:`<h2>ℹ️ About</h2>
 <p><b>IChing Divination</b> — an online divination tool based on the 64 hexagrams of the Book of Changes, using the traditional three-coin method.</p>
 <p><b>Features</b></p>
 <ul style="margin:4px 0 0 18px;line-height:2;font-size:12px">
@@ -676,10 +676,10 @@ function openM(type){
 <li>🌙 Light &amp; dark themes</li>
 </ul>
 <p><b>Tech:</b> Single-file front-end HTML/CSS/JS. No backend, no tracking, no data upload. Works offline.</p>
-<p><b>Author:</b> Forever Chitanda (永远的兰兰)</p>
+<p><b>Author:</b> Lanlan Eternal (永远的兰兰)</p>
 <p><b>Source:</b> <a href="https://github.com/podcatcher962/IChing" target="_blank" style="color:var(--accent)">github.com/podcatcher962/IChing</a></p>
 <p><b>Online:</b> <a href="https://podcatcher962.github.io/IChing" target="_blank" style="color:var(--accent)">podcatcher962.github.io/IChing</a></p>
-<p style="margin-top:10px;color:var(--dim);font-size:10px">© Forever Chitanda · 2026 · For cultural reference only</p>`};
+<p style="margin-top:10px;color:var(--dim);font-size:10px">© Lanlan Eternal · 2026 · For cultural reference only</p>`};
   document.getElementById('modalBox').innerHTML=`<button class="modal-close" onclick="closeM()">✕</button>${c[type]||''}`;
   document.getElementById('modalOverlay').classList.add('show');
 }

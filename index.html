@@ -76,10 +76,15 @@ input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 8px rgba(74
 .modal-box p,.modal-box li{font-size:11px;color:var(--text);line-height:1.8}
 .modal-close{position:absolute;top:12px;right:16px;color:var(--dim);font-size:20px;cursor:pointer;background:none;border:none;font-family:inherit}.modal-close:hover{color:var(--gold)}
 .bazi-box{margin-top:12px;padding:10px;background:rgba(74,105,189,0.08);border:1px solid var(--bdr);text-align:left}.bazi-toggle{display:flex;align-items:center;gap:7px;color:var(--gold);font-size:12px;cursor:pointer}.bazi-toggle input{width:auto}.bazi-fields{display:none;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:9px}.bazi-fields.show{display:grid}.bazi-fields label{font-size:10px;color:var(--dim)}.bazi-fields input,.bazi-fields select{width:100%;margin-top:3px;padding:7px;background:var(--inp);color:var(--text);border:1px solid var(--bdr);font-family:inherit;font-size:12px}.bazi-note{font-size:10px;color:var(--dim);line-height:1.7;margin-top:7px}
+/* Splash + 音乐 */
+#splash{position:fixed;inset:0;z-index:300;background:#f2e6cd url('generated-images/IChing_poster.jpg') center/contain no-repeat;animation:splashFade 9s ease forwards;}
+@keyframes splashFade{0%{opacity:0}8%{opacity:1}70%{opacity:1}100%{opacity:0;visibility:hidden}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/lunar-javascript@1.6.13/lunar.min.js"></script>
 </head>
 <body>
+<div id="splash"></div>
+<audio id="bgm" loop src="audio/iching.mp3"></audio>
 <div class="hdr">
 <h1>🪙 六爻起卦</h1>
 <div class="sub" id="subtitle">IChing Divination · 64 Hexagrams · 周易</div>
@@ -93,6 +98,7 @@ input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 8px rgba(74
 <a id="btnZh" class="active" onclick="setL('zh')">中</a>
 <a id="btnEn" onclick="setL('en')">EN</a>
 <a id="btnTheme" onclick="toggleTheme()" style="font-size:13px">🌙</a>
+<a id="btnSound" onclick="toggleSound()" title="背景音乐">♪ <span id="tSound">音乐</span></a>
 <a onclick="openHistory()">🕘 <span id="tHist">历史</span></a>
 </div>
 
@@ -266,6 +272,7 @@ function readBaziAssist(){
 
 function setL(l){
   lang=l;document.getElementById('btnZh').classList.toggle('active',l==='zh');document.getElementById('btnEn').classList.toggle('active',l==='en');
+  const ts=document.getElementById('tSound');if(ts)ts.textContent=l==='zh'?'音乐':'Music';
   const D={zh:{guide:'使用说明',disclaim:'免责声明',about:'关于',lblQ:'你想问什么？（选填）',lblZ:'✍️ 测字（选填·输入一字/数字）',baziToggle:'⚔ 加入像素命盘合参（选填）',baziNote:'填写公历出生年月日时，摇卦后将命盘与卦象、测字合并解读。',btnStart:'开始摇卦',btnQuick:'快速起卦',remarkInput:'心诚则灵 · 一事一问 · 仅供文化参考',coinHint:'点击铜钱摇卦',btnRedo:'重新起卦',btnCopy:'复制卦象',btnDown:'下载卦象卡',btnTxt:'导出卦辞报告',btnBack:'重新起卦',remarkResult:'© 永远的兰兰 · Lanlan Eternal · 仅供参考',footText:'© 六爻起卦 IChing · Lanlan Eternal · 易经六十四卦 · 仅供参考',placeholder:'如：最近的事业发展如何？',waiting:'等待摇卦...',subtitle:'IChing Divination · 64 Hexagrams · 周易',btnAuto:'自动摇卦',tHist:'历史'}, 
   en:{guide:'Guide',disclaim:'Disclaimer',about:'About',lblQ:'What do you want to ask? (optional)',lblZ:'✍️ CeZi (optional·input character/number)',baziToggle:'⚔ Add PixelBaZi synthesis (optional)',baziNote:'Enter Gregorian birth date and hour. The chart will be combined with the hexagram and character.',btnStart:'Start Casting',btnQuick:'Quick Cast',remarkInput:'One question per cast · Cultural reference only',coinHint:'Click coins to cast',btnRedo:'Start Over',btnCopy:'Copy Reading',btnDown:'Download Card',btnTxt:'Export Report',btnBack:'Start Over',remarkResult:'© Lanlan Eternal · Cultural reference only',footText:'© IChing Divination · Lanlan Eternal · Book of Changes · Reference Only',placeholder:'e.g. How will my career develop?',waiting:'Waiting for toss...',subtitle:'IChing Divination · 64 Hexagrams · Zhou Yi',btnAuto:'Auto Cast',tHist:'History'}};
   const d=D[l];
@@ -752,6 +759,26 @@ function autoToss(){
 
 // init theme
 (function(){try{applyTheme(localStorage.getItem('ichingTheme')||'light');}catch(e){applyTheme('light');}})();
+
+// ========== 背景音乐（默认播放） ==========
+let soundOn = true;
+function toggleSound(){
+  soundOn = !soundOn;
+  const bgm = document.getElementById('bgm');
+  if(soundOn){ bgm.play().catch(()=>{}); }
+  else { bgm.pause(); }
+  document.getElementById('btnSound').className = soundOn ? 'active' : '';
+}
+(function(){
+  const bgm = document.getElementById('bgm');
+  if(!bgm) return;
+  bgm.volume = 0.25;
+  bgm.play().catch(()=>{});
+  document.getElementById('btnSound').className = 'active';
+  document.addEventListener('pointerdown', function(){
+    if(soundOn && bgm.paused) bgm.play().catch(()=>{});
+  });
+})();
 </script>
 </body>
 </html>
